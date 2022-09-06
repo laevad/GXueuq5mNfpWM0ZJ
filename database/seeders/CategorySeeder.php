@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
-class UserSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,14 +16,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
-        DB::table('users')->insert([
+        DB::table('categories')->insert([
             [
                 'id' => Uuid::uuid3(Uuid::NAMESPACE_DNS, 'example.com')->toString(),
-                'firstname' => 'Admin',
-                'lastname' => 'Conan',
-                'email' => 'a@a.a',
-                'password' => Hash::make('12345'),
+                'name' => 'Main Dish',
+            ],
+            [
+                'id' => Uuid::uuid3(Uuid::NAMESPACE_DNS, 'example1.com')->toString(),
+                'name' => 'Appetizer',
             ]
         ]);
     }

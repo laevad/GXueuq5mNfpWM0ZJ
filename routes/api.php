@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegistrationController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\RecipeController;
 use App\Http\Controllers\Api\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('registration', RegistrationController::class)->only(['store']);
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('recipes', RecipeController::class);
 
 
 Route::group([
@@ -28,7 +32,7 @@ Route::group([
 
 ], function () {
 
-    Route::post('login', [AuthController::class, 'login']);
+    Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout',  [AuthController::class, 'logout']);
 
 });
